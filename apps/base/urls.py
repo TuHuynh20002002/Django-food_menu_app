@@ -17,6 +17,9 @@ Including another URLconf
 from . import views
 from django.urls import path
 
+app_nage = 'base'
+
 urlpatterns = [
     path('', views.index, name='index'),
+    path('up/', views.up, name='up'),
 ]
