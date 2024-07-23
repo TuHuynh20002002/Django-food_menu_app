@@ -1,0 +1,106 @@
+* {
+    font-family: "Roboto", sans-serif;
+    font-weight: 400;
+    font-style: normal;
+}
+
+.roboto-light {
+    font-family: "Roboto", sans-serif;
+    font-weight: 300;
+    font-style: normal;
+}
+
+.roboto-regular {
+    font-family: "Roboto", sans-serif;
+    font-weight: 400;
+    font-style: normal;
+}
+
+.roboto-bold {
+    font-family: "Roboto", sans-serif;
+    font-weight: 700;
+    font-style: normal;
+}
+
+.roboto-regular-italic {
+    font-family: "Roboto", sans-serif;
+    font-weight: 400;
+    font-style: italic;
+}
+
+.roboto-bold-italic {
+    font-family: "Roboto", sans-serif;
+    font-weight: 700;
+    font-style: italic;
+}
+
+.inconsolata-regular {
+    font-family: "Inconsolata", monospace;
+    font-optical-sizing: auto;
+    font-weight: 400;
+    font-style: normal;
+    font-variation-settings:
+        "wdth" 100;
+}
+
+.inconsolata-bold {
+    font-family: "Inconsolata", monospace;
+    font-optical-sizing: auto;
+    font-weight: 700;
+    font-style: normal;
+    font-variation-settings:
+        "wdth" 100;
+}
+
+h1 {
+    @extend .roboto-regular;
+    font-size: 3.2rem;
+
+    .secondary-content {
+        font-size: 2.8rem;
+    }
+}
+
+h2 {
+    @extend .roboto-regular;
+    font-size: 2.4rem;
+
+    .secondary-content {
+        font-size: 2.0rem;
+    }
+}
+
+h3 {
+    @extend .roboto-bold;
+    font-size: 2.0rem;
+
+    .secondary-content {
+        font-size: 1.8rem;
+        font-style: normal;
+    }
+}
+
+h4 {
+    @extend .roboto-bold;
+    font-size: 1.6rem;
+}
+
+h5 {
+    @extend .roboto-bold;
+    font-size: 1.4rem;
+}
+
+p {
+    font-family: "Palatino", serif;
+    font-size: 18px;
+
+    .secondary-content {
+        font-family: "Roboto", sans-serif;
+        font-size: 14px;
+    }
+}
+
+pre {
+    font-family: monospace;
+    font-size: 1em;
+}

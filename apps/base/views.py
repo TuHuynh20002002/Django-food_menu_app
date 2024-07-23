@@ -6,4 +6,4 @@ def up(request):
     return JsonResponse({"status": "up"})
 
 def index(request):
-    return HttpResponse("<h1>Home page</h1>")
+    return render(request, 'base/pages/index.html')

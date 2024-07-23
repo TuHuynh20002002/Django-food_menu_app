@@ -1,0 +1,20 @@
+{% extends 'base/layouts/base.html' %} 
+{% load static %} 
+
+{% block content %}
+<div class="app-bg-green-ultra-dark"></div>
+<h1 class="app-text-text">Food Menu App</h1>
+<pre class="app-text-text">Get started</pre>
+<pre class="app-text-text">Find me on img</pre>
+<div class="bg-white">
+  <img src="{% static 'icons/github.svg' %}" alt="" />
+</div>
+<div class="app-text-text">
+  <span>In this app</span>
+  <ul>
+    <li>Python 3</li>
+    <li>Django</li>
+    <li>Bootstrap 5</li>
+  </ul>
+</div>
+{% endblock %}
