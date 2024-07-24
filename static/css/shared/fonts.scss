@@ -56,7 +56,7 @@ h1 {
     @extend .roboto-regular;
     font-size: 3.2rem;
 
-    .secondary-content {
+    &.secondary-content {
         font-size: 2.8rem;
     }
 }
@@ -65,7 +65,7 @@ h2 {
     @extend .roboto-regular;
     font-size: 2.4rem;
 
-    .secondary-content {
+    &.secondary-content {
         font-size: 2.0rem;
     }
 }
@@ -74,7 +74,7 @@ h3 {
     @extend .roboto-bold;
     font-size: 2.0rem;
 
-    .secondary-content {
+    &.secondary-content {
         font-size: 1.8rem;
         font-style: normal;
     }
@@ -94,7 +94,7 @@ p {
     font-family: "Palatino", serif;
     font-size: 18px;
 
-    .secondary-content {
+    &.secondary-content {
         font-family: "Roboto", sans-serif;
         font-size: 14px;
     }
