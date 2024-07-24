@@ -1,0 +1,48 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	{% include 'base/includes/head.html' %}
+	{% block extraHead %}{% endblock extraHead %}
+</head>
+<body>
+
+	<div class="app-bg-green-ultra-dark"></div>
+
+  <div class="position-absolute top-50 start-50 translate-middle app-text-text text-center vw-100">
+
+    <div class="mb-5">
+      <img src="{% static 'icons/django-logo-negative.svg' %}" alt="" class="w-50 mb-2" loading="lazy">
+      <h1>Food Menu App</h1>
+    </div>
+
+    <div class="d-flex mb-4 justify-content-center">
+      <a href="#" class="app-btn-white me-1"><span class="secondary-content"><b>Get started</b></span></a>
+      <a href="https://github.com/tuhuynh20002002" class="app-btn-white ms-1" >
+        <span class="secondary-content"><b>Find me on</b></span>
+        <img src="{% static 'icons/github.svg' %}" alt="" class="app-github-icon ms-2" />
+      </a>
+    </div>
+
+    <div class="d-flex justify-content-evenly">
+      <a href="https://www.python.org/">
+        <img src="{% static 'icons/skill-icons-python-dark.svg' %}" alt="" class="app-skill-icons" title="Python" loading="lazy">
+      </a>
+      <a href="https://www.djangoproject.com/">
+        <img src="{% static 'icons/skill-icons-django.svg' %}" alt="" class="app-skill-icons" title="Django" loading="lazy">
+      </a>
+      <a href="https://getbootstrap.com/">
+        <img src="{% static 'icons/skill-icons-bootstrap.svg' %}" alt="" class="app-skill-icons" title="Bootstrap 5" loading="lazy">
+      </a>
+      <a href="https://www.sqlite.org/">
+        <img src="{% static 'icons/skill-icons-sqlite.svg' %}" alt="" class="app-skill-icons" title="SQLite" loading="lazy">
+      </a>
+    </div>
+
+  </div>
+
+	{% include 'base/includes/scripts.html' %}
+	{% block extraScripts %}{% endblock extraScripts %}
+
+</body>
+</html>
