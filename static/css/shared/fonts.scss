@@ -54,40 +54,42 @@
 
 h1 {
     @extend .roboto-regular;
-    font-size: 3.2rem;
+    font-size: 32px;
 
     &.secondary-content {
-        font-size: 2.8rem;
+        font-size: 28px;
     }
 }
 
 h2 {
     @extend .roboto-regular;
-    font-size: 2.4rem;
+    font-size: 24px;
 
     &.secondary-content {
-        font-size: 2.0rem;
+        font-size: 20px;
     }
 }
 
 h3 {
     @extend .roboto-bold;
-    font-size: 2.0rem;
+    font-size: 20px;
 
     &.secondary-content {
-        font-size: 1.8rem;
+        font-size: 18px;
         font-style: normal;
     }
 }
 
 h4 {
     @extend .roboto-bold;
-    font-size: 1.6rem;
+    font-size: 16px;
+    font-style: bold;
 }
 
 h5 {
     @extend .roboto-bold;
-    font-size: 1.4rem;
+    font-size: 16px;
+    font-style: normal;
 }
 
 p {

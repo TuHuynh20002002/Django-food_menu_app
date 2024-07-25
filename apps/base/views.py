@@ -7,3 +7,6 @@ def up(request):
 
 def index(request):
     return render(request, 'base/pages/index.html')
+
+def about(request):
+    return render(request, 'base/pages/about.html')

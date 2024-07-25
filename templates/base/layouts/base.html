@@ -6,8 +6,11 @@
     {% block extraHead %}{% endblock extraHead %}
 </head>
 <body>
+    {% include 'base/includes/navbar.html' %}
+
     {% block content %}{% endblock %}
+    
     {% include 'base/includes/scripts.html' %}
-    {% block extraScripts %}{% endblock extraScripts %}
+    {% block extraScripts %}{% endblock %}
 </body>
 </html>

@@ -18,9 +18,13 @@ $django-secondary: (
 );
 
 $django-extended: (
-  "green-ultra-dark": #082d1f,
+  "green-ultra-dark": #092e20,
   "gray-dark": #181d27,
 );
+
+body {
+  background-color: map-get($django-primary, "black");
+}
 
 a {
 	text-decoration: none;
@@ -46,6 +50,18 @@ span {
 
 .app-text-text {
   color: map-get($django-primary, "text");
+
+  & * {
+    color: map-get($django-primary, "text");
+  }
+}
+
+.app-text-black {
+  color: map-get($django-primary, "black");
+
+  & * {
+    color: map-get($django-primary, "black");
+  }
 }
 
 .app-github-icon {
@@ -93,4 +109,24 @@ span {
   border: 0.2rem solid;
   border-color: map-get($django-primary, "white");
   border-radius: 1rem;
+}
+
+.app-logo-text {
+  width: 7rem;
+}
+
+.app-navbar {
+  background-color: map-get($django-primary, "green-dark") !important;
+
+  & h5 {
+    margin: 0px;
+  } 
+}
+
+.app-text-active {
+  color: map-get($django-secondary, "green-medium");
+  
+  & * {
+    color: map-get($django-secondary, "green-medium");
+  }
 }
