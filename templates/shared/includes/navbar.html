@@ -2,7 +2,7 @@
 
 <nav class="navbar navbar-expand-lg app-navbar app-text-text" data-bs-theme="dark">
   <div class="container-fluid">
-    <a href="">
+    <a href="{% url 'base:index' %}">
       <img src="{% static 'icons/django-logo-text.svg' %}" alt="" class="app-logo-text">
     </a>
     <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
@@ -11,7 +11,19 @@
     <div class="collapse navbar-collapse" id="navbarSupportedContent">
       <ul class="navbar-nav me-auto mb-2 mb-lg-0">
         <li class="nav-item">
+          <a class="nav-link" href="{% url 'foods:index' %}"><h5>FOOD MENU</h5></a>
+        </li>
+        <li class="nav-item">
           <a class="nav-link" href="{% url 'base:about' %}"><h5>ABOUT</h5></a>
+        </li>
+        <li class="nav-item">
+          <a class="nav-link" href="{% url 'foods:orders' %}"><h5>ORDERS</h5></a>
+        </li>
+        <li class="nav-item">
+          <a class="nav-link" href="{% url 'foods:locations' %}"><h5>LOCATIONS</h5></a>
+        </li>
+        <li class="nav-item">
+          <a class="nav-link" href="{% url 'foods:rewards' %}"><h5>REWARDS</h5></a>
         </li>
       </ul>
       <ul class="navbar-nav">
