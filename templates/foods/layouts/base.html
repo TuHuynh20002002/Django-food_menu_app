@@ -2,12 +2,15 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-	{% include 'foods/includes/head.html' %}
-	{% block extraHead %}{% endblock extraHead %}
+    {% include 'foods/includes/head.html' %}
+    {% block extraHead %}{% endblock extraHead %}
 </head>
 <body>
-	{% block content %}{% endblock %}
-	{% include 'foods/includes/scripts.html' %}
-	{% block extraScripts %}{% endblock extraScripts %}
+    {% include 'shared/includes/navbar.html' %}
+
+    {% block content %}{% endblock %}
+    
+    {% include 'foods/includes/scripts.html' %}
+    {% block extraScripts %}{% endblock %}
 </body>
 </html>

@@ -21,4 +21,7 @@ app_name = 'foods'
 
 urlpatterns = [
     path('', views.index, name='index'),
+    path('orders/', views.index, name='orders'),
+    path('locations/', views.index, name='locations'),
+    path('rewards/', views.index, name='rewards'),
 ]
