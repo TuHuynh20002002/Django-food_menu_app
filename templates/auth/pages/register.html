@@ -2,6 +2,43 @@
 
 {% block content %}
 <div class="app-bg-green-ultra-dark">
-  <h1 class="app-text-text">Register</h1>
+  <div class="container">
+    <form action="" class="needs-validation">
+      <!-- Username -->
+      <div class="form-floating mb-3">
+        <input type="text" class="form-control" id="floatingInput" placeholder="Username" required>
+        <label for="floatingInput">Username</label>
+      </div>
+      <!-- Email address -->
+      <div class="form-floating mb-3">
+        <input type="email" class="form-control" id="floatingInput" placeholder="name@example.com" required>
+        <label for="floatingInput">Email address</label>
+      </div>
+      <!-- Password -->
+      <div class="form-floating mb-3">
+        <input type="password" class="form-control" id="floatingPassword" placeholder="Password" required>
+        <label for="floatingPassword">Password</label>
+      </div>
+      <!-- Password Confirmation -->
+      <div class="form-floating mb-3">
+        <input type="password" class="form-control" id="floatingPasswordConfirmation" placeholder="Password" required>
+        <label for="floatingPasswordConfirmation">Password Confirmation</label>
+      </div>
+      <!-- Terms and Conditions -->
+      <div class="col-12">
+        <div class="form-check app-text-text">
+          <input class="form-check-input" type="checkbox" value="" id="invalidCheck" required>
+          <label class="form-check-label" for="invalidCheck">
+            Agree to terms and conditions
+          </label>
+        </div>
+      </div>
+      <button type="submit" class="btn btn-primary mt-3">REGISTER</button>
+    </form>
+  </div>
+  
+  <a href="{% url 'auth:login' %}">
+    <button type="submit" class="btn btn-primary">LOGIN</button>
+  </a>
 </div>
 {% endblock %}
