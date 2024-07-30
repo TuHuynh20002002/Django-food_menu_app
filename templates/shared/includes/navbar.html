@@ -2,7 +2,7 @@
 
 <nav class="navbar navbar-expand-lg app-navbar app-text-text" data-bs-theme="dark">
   <div class="container-fluid">
-    <a href="{% url 'base:index' %}">
+    <a href="{% url 'base:getIndex' %}">
       <img src="{% static 'icons/django-logo-text.svg' %}" alt="" class="app-logo-text">
     </a>
     <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
@@ -11,29 +11,38 @@
     <div class="collapse navbar-collapse" id="navbarSupportedContent">
       <ul class="navbar-nav me-auto mb-2 mb-lg-0">
         <li class="nav-item">
-          <a class="nav-link" href="{% url 'foods:index' %}"><h5>FOOD MENU</h5></a>
+          <a class="nav-link" href="{% url 'foods:getIndex' %}"><h5>FOOD MENU</h5></a>
         </li>
         <li class="nav-item">
-          <a class="nav-link" href="{% url 'base:about' %}"><h5>ABOUT</h5></a>
+          <a class="nav-link" href="{% url 'base:getAbout' %}"><h5>ABOUT</h5></a>
         </li>
         <li class="nav-item">
-          <a class="nav-link" href="{% url 'foods:orders' %}"><h5>ORDERS</h5></a>
+          <a class="nav-link" href="{% url 'foods:getOrders' %}"><h5>ORDERS</h5></a>
         </li>
         <li class="nav-item">
-          <a class="nav-link" href="{% url 'foods:locations' %}"><h5>LOCATIONS</h5></a>
+          <a class="nav-link" href="{% url 'foods:getLocations' %}"><h5>LOCATIONS</h5></a>
         </li>
         <li class="nav-item">
-          <a class="nav-link" href="{% url 'foods:rewards' %}"><h5>REWARDS</h5></a>
+          <a class="nav-link" href="{% url 'foods:getRewards' %}"><h5>REWARDS</h5></a>
         </li>
       </ul>
+
+      {% if user.is_authenticated %}
       <ul class="navbar-nav">
         <li class="nav-item">
-          <a class="nav-link" href="#"><h5>REGISTER</h5></a>
-        </li>
-        <li class="nav-item">
-          <a class="nav-link" href="#"><h5>LOGIN</h5></a>
+          <a class="nav-link" href="{% url 'auth:postLogout' %}"><h5>LOGOUT</h5></a>
         </li>
       </ul>
+      {% else %}
+      <ul class="navbar-nav">
+        <li class="nav-item">
+          <a class="nav-link" href="{% url 'auth:getRegister' %}"><h5>REGISTER</h5></a>
+        </li>
+        <li class="nav-item">
+          <a class="nav-link" href="{% url 'auth:getLogin' %}"><h5>LOGIN</h5></a>
+        </li>
+      </ul>
+      {% endif %}
     </div>
   </div>
 </nav>

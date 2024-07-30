@@ -17,10 +17,12 @@ Including another URLconf
 from . import views
 from django.urls import path
 
-app_name = 'base'
+app_name = 'auth'
 
 urlpatterns = [
-    path('', views.baseGetIndex, name='getIndex'),
-    path('about/', views.baseGetAbout, name='getAbout'),
-    path('up/', views.up, name='up'),
+    path('login/', views.authGetLogin, name='getLogin'),
+    path('register/', views.authGetRegister, name='getRegister'),
+    path('postRegister/', views.authPostRegister, name='postRegister'),
+    path('postLogin/', views.authPostLogin, name='postLogin'),
+    path('postLogout/', views.authPostLogout, name='postLogout'),
 ]
