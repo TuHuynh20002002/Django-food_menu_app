@@ -1,19 +1,24 @@
 from django.shortcuts import render
+from django.contrib.auth.decorators import login_required
 from django.http import JsonResponse
 import re
 
 
-def index(request):
+@login_required
+def foodsGetIndex(request):
     return render(request, 'foods/pages/index.html')
 
 
-def orders(request):
+@login_required
+def foodsGetOrders(request):
     return render(request, 'foods/pages/orders.html')
 
 
-def locations(request):
+@login_required
+def foodsGetLocations(request):
     return render(request, 'foods/pages/locations.html')
 
 
-def rewards(request):
+@login_required
+def foodsGetRewards(request):
     return render(request, 'foods/pages/rewards.html')

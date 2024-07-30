@@ -130,3 +130,10 @@ STATICFILES_DIRS = [
 # https://docs.djangoproject.com/en/5.0/ref/settings/#default-auto-field
 
 DEFAULT_AUTO_FIELD = 'django.db.models.BigAutoField'
+
+
+# Custom settings
+LOGIN_URL = '/auth/login/'
+LOGOUT_URL = '/auth/logout/'
+LOGIN_REDIRECT_URL = '/foods/'
+LOGOUT_REDIRECT_URL = "/"

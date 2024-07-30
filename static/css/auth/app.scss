@@ -11,7 +11,7 @@ $django-primary: (
 $django-secondary: (
   "green-medium-dark": #2b8c67,
   "green-medium": #44b78b,
-  "green-medium-light": #44b78b,
+  "green-medium-light": #51be95,
   "text-light": #afb7b3,
   "gray-line": #cfe3dc,
   "red": #ba2121,
@@ -100,3 +100,34 @@ span {
   width: 7rem;
 }
 
+.app-btn-green-medium {
+  width: 10rem;
+  height: 3rem;
+  background-color: map-get($django-secondary, "green-medium");
+  color: map-get($django-primary, "black");
+  border: 0.2rem solid;
+  border-color: map-get($django-primary, "black");
+  border-radius: 0.5rem;
+  cursor: pointer;
+  transition: all 0.3s;
+	font-family: "Roboto", sans-serif;
+  display: flex ;
+  justify-content: center;
+  align-items: center;
+
+	&:hover {
+		border: 0.2rem solid;
+		border-color: map-get($django-primary, "black");
+		border-radius: 0.5rem;
+		background-color: map-get($django-secondary, "green-medium-light");
+		color: map-get($django-primary, "black");
+	}
+
+	&:active {
+		border: 0.2rem solid;
+		border-color: map-get($django-primary, "black");
+		border-radius: 0.5rem;
+		background-color: map-get($django-secondary, "green-light");
+		color: map-get($django-primary, "black");
+	}
+}

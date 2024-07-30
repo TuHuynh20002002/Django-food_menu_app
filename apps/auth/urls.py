@@ -20,6 +20,9 @@ from django.urls import path
 app_name = 'auth'
 
 urlpatterns = [
-    path('login/', views.login, name='login'),
-    path('register/', views.register, name='register'),
+    path('login/', views.authGetLogin, name='getLogin'),
+    path('register/', views.authGetRegister, name='getRegister'),
+    path('postRegister/', views.authPostRegister, name='postRegister'),
+    path('postLogin/', views.authPostLogin, name='postLogin'),
+    path('postLogout/', views.authPostLogout, name='postLogout'),
 ]

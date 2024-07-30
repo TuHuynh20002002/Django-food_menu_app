@@ -20,7 +20,7 @@ from django.urls import path
 app_name = 'base'
 
 urlpatterns = [
-    path('', views.index, name='index'),
-    path('about/', views.about, name='about'),
+    path('', views.baseGetIndex, name='getIndex'),
+    path('about/', views.baseGetAbout, name='getAbout'),
     path('up/', views.up, name='up'),
 ]
