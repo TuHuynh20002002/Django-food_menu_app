@@ -1,0 +1,16 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    {% include 'base/includes/head.html' %}
+    {% block extraHead %}{% endblock extraHead %}
+</head>
+<body>
+    {% include 'shared/includes/navbar.html' %}
+
+    {% block content %}{% endblock %}
+    
+    {% include 'base/includes/scripts.html' %}
+    {% block extraScripts %}{% endblock %}
+</body>
+</html>

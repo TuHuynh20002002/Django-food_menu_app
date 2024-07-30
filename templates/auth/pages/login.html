@@ -1,0 +1,38 @@
+{% extends 'auth/layouts/base.html' %}
+
+{% block content %}
+<div class="app-bg-green-ultra-dark">
+  <div class="position-absolute top-50 start-50 translate-middle text-center">
+    <form method="POST" action="{% url 'auth:postLogin' %}" id="login-form" class="needs-validation">
+      <!-- Title -->
+      <h1 class="app-text-text">LOGIN</h1>
+      <!-- Username -->
+      <div class="form-floating mb-3">
+        <input name="username" type="text" class="form-control" id="floatingInput" placeholder="Username" pattern="^(?=[a-zA-Z0-9._]{5,24}$)(?!.*[_.]{2})[^_.].*[^_.]$" required>
+        <label for="floatingInput">Username</label>
+      </div>
+      <!-- Password -->
+      <div class="form-floating">
+        <input name="password" type="password" class="form-control" id="floatingPassword" placeholder="Password" required>
+        <label for="floatingPassword">Password</label>
+      </div>
+      {% csrf_token %}
+    </form>
+
+    <div class="d-flex mt-3 gap-2 justify-content-evenly">
+      <a href="{% url 'auth:getRegister' %}">
+        <button class="app-btn-white">REGISTER</button>
+      </a>
+      <button type="submit" class="app-btn-green-medium" form="login-form">LOGIN</button>
+    </div>
+  </div>
+</div>
+
+{% if messages %}
+  {% for message in messages %}
+    <div class="alert alert-danger fixed-bottom" role="alert">
+      {{ message }}
+    </div>
+  {% endfor %}
+{% endif %}
+{% endblock %}

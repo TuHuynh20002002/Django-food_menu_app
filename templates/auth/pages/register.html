@@ -1,0 +1,57 @@
+{% extends 'auth/layouts/base.html' %}
+
+{% block content %}
+<div class="app-bg-green-ultra-dark">
+  <div class="position-absolute top-50 start-50 translate-middle text-center">
+    <form method="POST" action="{% url 'auth:postRegister' %}" id="register-form" class="needs-validation">
+      <!-- Title -->
+      <h1 class="app-text-text">REGISTER</h1>
+      <!-- Username -->
+      <div class="form-floating mb-3">
+        <input name="username" type="text" class="form-control" id="floatingInput" placeholder="Username" pattern="^(?=[a-zA-Z0-9._]{5,24}$)(?!.*[_.]{2})[^_.].*[^_.]$" required>
+        <label for="floatingInput">Username</label>
+      </div>
+      <!-- Email address -->
+      <div class="form-floating mb-3">
+        <input name="email" type="email" class="form-control" id="floatingInput" placeholder="name@example.com" required>
+        <label for="floatingInput">Email address</label>
+      </div>
+      <!-- Password -->
+      <div class="form-floating mb-3">
+        <input name="password" type="password" class="form-control" id="floatingPassword" placeholder="Password" required>
+        <label for="floatingPassword">Password</label>
+      </div>
+      <!-- Password Confirmation -->
+      <div class="form-floating mb-3">
+        <input name="password_confirmation" type="password" class="form-control" id="floatingPasswordConfirmation" placeholder="Password" required>
+        <label for="floatingPasswordConfirmation">Password Confirmation</label>
+      </div>
+      <!-- Terms and Conditions -->
+      <div class="col-12">
+        <div class="form-check app-text-text">
+          <input class="form-check-input" type="checkbox" value="" id="invalidCheck" required>
+          <label class="form-check-label" for="invalidCheck">
+            Agree to terms and conditions
+          </label>
+        </div>
+      </div>
+      {% csrf_token %}
+    </form>
+
+    <div class="d-flex mt-3 gap-2 justify-content-evenly">
+      <a href="{% url 'auth:getLogin' %}">
+        <button class="app-btn-white">LOGIN</button>
+      </a>
+      <button type="submit" class="app-btn-green-medium" form="register-form">REGISTER</button>
+    </div>
+  </div>
+</div>
+
+{% if messages %}
+  {% for message in messages %}
+    <div class="alert alert-danger" role="alert">
+      {{ message }}
+    </div>
+  {% endfor %}
+{% endif %}
+{% endblock %}
