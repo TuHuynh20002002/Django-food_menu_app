@@ -1,0 +1,52 @@
+[
+  {
+    "model": "foods.Item",
+    "pk": 1,
+    "fields": {
+      "title": "ebi sushi",
+      "description": "Cooked shrimp/prawn as the main ingredient, typically presented on seasoned sushi rice. It has a sweet, slightly firm texture and mild, shrimp-forward flavor. EBI SUSHI is commonly served as nigiri or in sushi rolls, and is a common item in Japanese cuisine.",
+      "price": 2.0,
+      "image": "/static/images/foods/ebi_sushi.jpg"
+    }
+  },
+  {
+    "model": "foods.Item",
+    "pk": 2,
+    "fields": {
+      "title": "hokkigai sushi",
+      "description": "The meat of the surf clam (also known as the hokkigai clam) as the main ingredient. The clam meat is typically sliced and placed atop seasoned sushi rice, sometimes in a curved or curved shape. HOKKIGAI SUSHI has a chewy, slightly crunchy texture and a briny, umami-rich flavor from the clam. It is a common type of sashimi-style sushi that showcases the natural taste of the high-quality surf clam. HOKKIGAI SUSHI is a popular item in Japanese sushi restaurants and cuisine.",
+      "price": 2.5,
+      "image": "/static/images/foods/hokkigai_sushi.jpg"
+    }
+  },
+  {
+    "model": "foods.Item",
+    "pk": 3,
+    "fields": {
+      "title": "salmon sushi",
+      "description": "Fresh, raw salmon as the main ingredient. The salmon is typically sliced into thin rectangular pieces and placed atop a small mound of seasoned sushi rice. Salmon sushi has a smooth, buttery texture and a rich, slightly sweet flavor. It is one of the most popular and commonly found types of sushi, both in Japanese cuisine and internationally. SALMON SUSHI can be served as traditional nigiri-style sushi, or rolled into maki (sushi rolls) along with other ingredients like avocado or cucumber. It is often garnished with condiments like soy sauce, wasabi, and pickled ginger. SALMON SUSHI is prized for its vibrant color, delicate taste, and versatility as a sushi topping.",
+      "price": 3.0,
+      "image": "/static/images/foods/salmon_sushi.jpg"
+    }
+  },
+  {
+    "model": "foods.Item",
+    "pk": 4,
+    "fields": {
+      "title": "kani sushi",
+      "description": "Crab meat as the main ingredient, which can be presented as crab sticks, fresh lump meat, or in a crab salad. The crab provides a sweet, briny flavor and delicate, slightly chewy texture when served atop seasoned sushi rice. Kani sushi is a popular item at Japanese restaurants, often garnished with additional savory toppings.",
+      "price": 3.0,
+      "image": "/static/images/foods/kani_sushi.jpg"
+    }
+  },
+  {
+    "model": "foods.Item",
+    "pk": 5,
+    "fields": {
+      "title": "tako sushi",
+      "description": "Boiled, sliced octopus as the main ingredient, with a tender, slightly chewy texture and savory, seafood-like flavor. The octopus pieces are served atop sushi rice, either as nigiri-style sushi or in sushi rolls.",
+      "price": 3.0,
+      "image": "/static/images/foods/tako_sushi.jpg"
+    }
+  }
+]
