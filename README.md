@@ -23,19 +23,41 @@ To use this app, you need to have Python3 and Django on your machine. You can in
 
 ## Usage
 1.  Clone or download the repository to your local machine.
+
 2.  Open a terminal or command prompt and navigate to the project directory.
-3.  Run initial migration:
+
+3.  Run initial migration: 
+    <br>
+    <i>&nbsp;**(If you using Windows, use <b>python</b> instead of <b>python3</b>)&nbsp;</i>
+    ```bash
+    python3 manage.py migrate
     ```
-    python manage.py migrate
-    ```
+
 4.  Create Super-admin user:
+    ```bash
+    python3 manage.py createsuperuser 
     ```
-    py manage.py createsuperuser 
+
+5.  Seeding all `seeding_file.json`:
+  - Linux:
+    ```bash
+    files=$(find . -name "*.json" -path "*/fixtures/*" -type f)
+    for file in $files; do python3 manage.py loaddata "$file"; done
     ```
-5.  Run server:
+  - Windows:
+    ```powershell
+    $files = Get-ChildItem -Path . -Recurse -Filter *.json
+    $fixtures = $files | Where-Object { $_.FullName -like '*\fixtures\*' }
+    foreach ($fixture in $fixtures) {
+        python manage.py loaddata $fixture.FullName
+    }
     ```
-    python manage.py runserver
+
+6.  Run server:
+    ```bash
+    python3 manage.py runserver
     ```
+
 
 ## Contributing
 If you would like to contribute to this project, feel free to fork the repository and submit a pull request. Any contributions are welcome!
