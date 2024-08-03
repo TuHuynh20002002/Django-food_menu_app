@@ -26,7 +26,9 @@ To use this app, you need to have Python3 and Django on your machine. You can in
 
 2.  Open a terminal or command prompt and navigate to the project directory.
 
-3.  Run initial migration:
+3.  Run initial migration: 
+    <br>
+    <i>&nbsp;**(If you using Windows, use <b>python</b> instead of <b>python3</b>)&nbsp;</i>
     ```bash
     python3 manage.py migrate
     ```
@@ -37,8 +39,18 @@ To use this app, you need to have Python3 and Django on your machine. You can in
     ```
 
 5.  Seeding all `seeding_file.json`:
+  - Linux:
     ```bash
-    find . -path "*/fixtures/*.json" -type f -exec python3 manage.py loaddata {} +
+    files=$(find . -name "*.json" -path "*/fixtures/*" -type f)
+    for file in $files; do python3 manage.py loaddata "$file"; done
+    ```
+  - Windows:
+    ```powershell
+    $files = Get-ChildItem -Path . -Recurse -Filter *.json
+    $fixtures = $files | Where-Object { $_.FullName -like '*\fixtures\*' }
+    foreach ($fixture in $fixtures) {
+        python manage.py loaddata $fixture.FullName
+    }
     ```
 
 6.  Run server:
