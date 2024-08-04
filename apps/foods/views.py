@@ -1,12 +1,14 @@
-from django.shortcuts import render
-from django.contrib.auth.decorators import login_required
-from django.http import JsonResponse
 import re
+from django.http import JsonResponse
+from django.contrib.auth.decorators import login_required
+from django.shortcuts import render
+from .models import Item
 
 
 @login_required
 def foodsGetIndex(request):
-    return render(request, 'foods/pages/index.html')
+    items_list = Item.objects.all()
+    return render(request, 'foods/pages/index.html', {'items': items_list})
 
 
 @login_required

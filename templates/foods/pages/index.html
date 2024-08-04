@@ -1,5 +1,31 @@
 {% extends 'foods/layouts/base.html' %}
 
+{% load static %}
+
 {% block content %}
-<h1 class="app-text-text">Index Page</h1>
+
+<div class="row row-cols-lg-5 row-cols-1">
+  {% for item in items %}
+  <div class="card">
+    <img class="card-img-top" src="{% static 'icons/not-found-image.svg' %}" alt="Card image cap">
+    <div class="card-body">
+      <h5 class="card-title">{{ item.title|title }}</h5>
+      <p class="card-text">{{ item.price }}</p>
+      <a href="#" class="btn btn-primary">Detail</a>
+      <a href="#" class="btn btn-primary">Order</a>
+    </div>
+  </div>
+  {% endfor %}
+</div>
+
+{% endblock %}
+
+
+{% block extraScripts %}
+<script src="{% static 'vendor/list.js@2.3.1/list.min.js' %}"></script>
+<script>
+var monkeyList = new List('test-list', { 
+  valueNames: ['name']
+});
+</script>
 {% endblock %}

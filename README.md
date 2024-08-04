@@ -28,7 +28,7 @@ To use this app, you need to have Python3 and Django on your machine. You can in
 
 3.  Run initial migration: 
     <br>
-    <i>&nbsp;**(If you using Windows, use <b>python</b> instead of <b>python3</b>)&nbsp;</i>
+    <i>&nbsp;**(If you are using Windows, use <b>python</b> instead of <b>python3</b>)&nbsp;</i>
     ```bash
     python3 manage.py migrate
     ```
