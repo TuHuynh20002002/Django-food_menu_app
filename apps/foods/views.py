@@ -12,6 +12,12 @@ def foodsGetIndex(request):
 
 
 @login_required
+def foodsGetDetails(request, item_id):
+    item = Item.objects.get(pk=item_id)
+    return render(request, 'foods/pages/details.html', {'item': item})
+
+
+@login_required
 def foodsGetOrders(request):
     return render(request, 'foods/pages/orders.html')
 

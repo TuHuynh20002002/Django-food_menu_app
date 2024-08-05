@@ -1,0 +1,20 @@
+{% extends 'foods/layouts/base.html' %}
+
+{% load static %}
+
+{% block content %}
+<div class="card p-0">
+  <img class="card-img-top" src="{% static 'icons/not-found-image.svg' %}" alt="Card image cap">
+  <div class="card-body">
+    <h5 class="card-title">{{ item.title|title }}</h5>
+    <p class="card-text">{{ item.description }}</p>
+    <p class="card-text">{{ item.price }}</p>
+    <div class="text-end">
+      <a href="#" class="btn btn-secondary">Order</a>
+    </div>
+  </div>
+</div>
+{% endblock %}
+
+{% block extraScripts %}
+{% endblock %}

@@ -21,6 +21,7 @@ app_name = 'foods'
 
 urlpatterns = [
     path('', views.foodsGetIndex, name='getIndex'),
+    path('details/<int:item_id>/', views.foodsGetDetails, name='getDetails'),
     path('orders/', views.foodsGetOrders, name='getOrders'),
     path('locations/', views.foodsGetLocations, name='getLocations'),
     path('rewards/', views.foodsGetRewards, name='getRewards'),
