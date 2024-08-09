@@ -48,6 +48,14 @@ span {
   }
 }
 
+.app-text-green-dark {
+  color: map-get($django-primary, "green-dark") !important;
+
+  & * {
+    color: map-get($django-primary, "green-dark") !important;
+  }
+}
+
 .app-text-black {
   color: map-get($django-primary, "black");
 
@@ -105,5 +113,13 @@ span {
   
   & * {
     color: map-get($django-secondary, "green-medium");
+  }
+}
+
+.app-bg-green-dark {
+  background-color: map-get($django-primary, "green-dark") !important;
+  
+  & * {
+    background-color: map-get($django-primary, "green-dark") !important;
   }
 }
