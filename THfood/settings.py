@@ -39,6 +39,8 @@ INSTALLED_APPS = [
     'django.contrib.messages',
     'django.contrib.staticfiles',
 
+    'fontawesomefree',
+
     'apps.base.apps.BaseConfig',
     'apps.foods.apps.FoodsConfig',
 ]

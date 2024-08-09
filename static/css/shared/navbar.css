@@ -1,0 +1,1 @@
+.cart-badge:after{content:attr(value);font-size:9px;background:#6a0e0e;border-radius:9999px;padding:4px;position:relative;left:1px;top:-15px}
