@@ -39,8 +39,6 @@ INSTALLED_APPS = [
     'django.contrib.messages',
     'django.contrib.staticfiles',
 
-    'fontawesomefree',
-
     'apps.base.apps.BaseConfig',
     'apps.foods.apps.FoodsConfig',
 ]
@@ -139,5 +137,3 @@ LOGIN_URL = '/auth/login/'
 LOGOUT_URL = '/auth/logout/'
 LOGIN_REDIRECT_URL = '/foods/'
 LOGOUT_REDIRECT_URL = "/"
-
-FIXTURE_DIRS = ["/apps/foods/fixtures/"]
