@@ -6,7 +6,7 @@
       "title": "ebi sushi",
       "description": "Cooked shrimp/prawn as the main ingredient, typically presented on seasoned sushi rice. It has a sweet, slightly firm texture and mild, shrimp-forward flavor. EBI SUSHI is commonly served as nigiri or in sushi rolls, and is a common item in Japanese cuisine.",
       "price": 2.0,
-      "image": "/static/images/foods/ebi_sushi.jpg"
+      "image_url": "/static/images/foods/ebi_sushi.jpg"
     }
   },
   {
@@ -16,7 +16,7 @@
       "title": "hokkigai sushi",
       "description": "The meat of the surf clam (also known as the hokkigai clam) as the main ingredient. The clam meat is typically sliced and placed atop seasoned sushi rice, sometimes in a curved or curved shape. HOKKIGAI SUSHI has a chewy, slightly crunchy texture and a briny, umami-rich flavor from the clam. It is a common type of sashimi-style sushi that showcases the natural taste of the high-quality surf clam. HOKKIGAI SUSHI is a popular item in Japanese sushi restaurants and cuisine.",
       "price": 2.5,
-      "image": "/static/images/foods/hokkigai_sushi.jpg"
+      "image_url": "/static/images/foods/hokkigai_sushi.jpg"
     }
   },
   {
@@ -26,7 +26,7 @@
       "title": "salmon sushi",
       "description": "Fresh, raw salmon as the main ingredient. The salmon is typically sliced into thin rectangular pieces and placed atop a small mound of seasoned sushi rice. Salmon sushi has a smooth, buttery texture and a rich, slightly sweet flavor. It is one of the most popular and commonly found types of sushi, both in Japanese cuisine and internationally. SALMON SUSHI can be served as traditional nigiri-style sushi, or rolled into maki (sushi rolls) along with other ingredients like avocado or cucumber. It is often garnished with condiments like soy sauce, wasabi, and pickled ginger. SALMON SUSHI is prized for its vibrant color, delicate taste, and versatility as a sushi topping.",
       "price": 3.0,
-      "image": "/static/images/foods/salmon_sushi.jpg"
+      "image_url": "/static/images/foods/salmon_sushi.jpg"
     }
   },
   {
@@ -36,7 +36,7 @@
       "title": "kani sushi",
       "description": "Crab meat as the main ingredient, which can be presented as crab sticks, fresh lump meat, or in a crab salad. The crab provides a sweet, briny flavor and delicate, slightly chewy texture when served atop seasoned sushi rice. Kani sushi is a popular item at Japanese restaurants, often garnished with additional savory toppings.",
       "price": 2.2,
-      "image": "/static/images/foods/kani_sushi.jpg"
+      "image_url": "/static/images/foods/kani_sushi.jpg"
     }
   },
   {
@@ -46,7 +46,7 @@
       "title": "tako sushi",
       "description": "Boiled, sliced octopus as the main ingredient, with a tender, slightly chewy texture and savory, seafood-like flavor. The octopus pieces are served atop sushi rice, either as nigiri-style sushi or in sushi rolls.",
       "price": 2.5,
-      "image": "/static/images/foods/tako_sushi.jpg"
+      "image_url": "/static/images/foods/tako_sushi.jpg"
     }
   },
   {
@@ -56,7 +56,7 @@
       "title": "inari sushi",
       "description": "Fried tofu pouches as the main ingredient. The tofu pouches have a sweet and savory flavor, and a soft, silky texture. The tofu pouches are stuffed with seasoned sushi rice, providing a pleasant contrast between the delicate tofu and the firmer rice.",
       "price": 2.0,
-      "image": "/static/images/foods/inari_sushi.jpg"
+      "image_url": "/static/images/foods/inari_sushi.jpg"
     }
   },
   {
@@ -66,7 +66,7 @@
       "title": "unagi sushi",
       "description": "Grilled and sauced freshwater eel as the main ingredient. The eel is typically prepared by first gutting, skinning, and cutting it into bite-sized pieces. It is then skewered and grilled or broiled until the exterior develops a caramelized, glazed appearance",
       "price": 7.5,
-      "image": "/static/images/foods/unagi_sushi.jpg"
+      "image_url": "/static/images/foods/unagi_sushi.jpg"
     }
   },
   {
@@ -76,7 +76,7 @@
       "title": "maguro sushi",
       "description": "Sices of fresh tuna as the main ingredient. The tuna can be sourced from various species, such as bluefin tuna, yellowfin tuna, or bigeye tuna, each with its own unique flavor profile.",
       "price": 2.0,
-      "image": "/static/images/foods/maguro_sushi.jpg"
+      "image_url": "/static/images/foods/maguro_sushi.jpg"
     }
   },
   {
@@ -86,7 +86,7 @@
       "title": "hamachi sushi",
       "description": "Slices of yellowtail fish as the main ingredient. Yellowtail, also known as hamachi in Japanese, is a type of large sea bream that is highly prized in sushi and Japanese cuisine.",
       "price": 4.5,
-      "image": "/static/images/foods/hamachi_sushi.jpg"
+      "image_url": "/static/images/foods/hamachi_sushi.jpg"
     }
   },
   {
@@ -96,7 +96,7 @@
       "title": "tamago sushi",
       "description": "A sweet, egg-based omelet as the main ingredient. The tamago, or Japanese-style egg custard, is made by slowly cooking layers of seasoned, lightly sweetened egg into a soft, fluffy block.",
       "price": 2.5,
-      "image": "/static/images/foods/tamago_sushi.jpg"
+      "image_url": "/static/images/foods/tamago_sushi.jpg"
     }
   }
 ]

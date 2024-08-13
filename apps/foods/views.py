@@ -2,7 +2,8 @@ import re
 from django.http import JsonResponse
 from django.contrib.auth.decorators import login_required
 from django.shortcuts import render
-from .models import Item
+import json
+from .models import Item, Cart_session, Cart_item
 
 
 @login_required
@@ -30,3 +31,28 @@ def foodsGetLocations(request):
 @login_required
 def foodsGetRewards(request):
     return render(request, 'foods/pages/rewards.html')
+
+@login_required
+def cartItemGetQuantity(request):
+    cart_session, created = Cart_session.objects.get_or_create(user=request.user)
+    cart_items = Cart_item.objects.filter(cart_session=cart_session)
+    return JsonResponse({'quantity': len(cart_items)})
+
+@login_required
+def cartItemAdd(request):
+    data = json.loads(request.body)
+    item = data['item_id']
+    item_quantity = int(data['item_quantity'])  
+    item = Item.objects.get(pk=item)
+    
+    cart_session, created = Cart_session.objects.get_or_create(user=request.user)
+    cart_item, created = Cart_item.objects.get_or_create(cart_session=cart_session, item=item)
+    
+    cart_item.quantity += item_quantity
+    cart_item.save()
+    
+    cart_session.total += cart_item.total()
+    cart_session.save()
+    
+    cart_items = Cart_item.objects.filter(cart_session=cart_session)
+    return JsonResponse({'quantity': len(cart_items)})

@@ -14,17 +14,53 @@
   <div class="row row-cols-lg-4 row-cols-1 list">
     {% for item in items %}
     <div class="card p-0">
-      <img class="card-img-top" src="{% static 'icons/not-found-image.svg' %}" alt="Card image cap">
+      <a href="{% url 'foods:getDetails' item.id %}">
+        <img class="card-img-top" src="{% static 'icons/not-found-image.svg' %}" alt="Card image cap">
+      </a>
       <div class="card-body">
-        <h5 class="card-title foods-title">{{ item.title|title }}</h5>
-        <p class="card-text foods-price">{{ item.price }}</p>
+        <h5 class="card-title foods-title" data-foods-title="{{ item.id }}">{{ item.title|title }}</h5>
+        <p class="card-text foods-price" data-foods-price="{{ item.id }}"">{{ item.price }}</p>
         <div class="text-end">
-          <a href="{% url 'foods:getDetails' item.id %}" class="btn btn-success">Detail</a>
-          <a href="#" class="btn btn-secondary">Order</a>
+          <a href="" class="btn btn-success">Buy now</a>
+          <button type="button" class="btn btn-secondary" data-btn-id="{{ item.id }}" data-bs-toggle="modal" data-bs-target="#orderModal">
+            Add to cart
+          </button>
         </div>
       </div>
     </div>
     {% endfor %}
+  </div>
+</div>
+<div class="modal fade" id="orderModal" tabindex="-1" aria-labelledby="orderModalLabel" aria-hidden="true">
+  <div class="modal-dialog modal-dialog-centered" id="orderModal">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h1 id="title" class="modal-title fs-5" id="orderModalLabel">Modal title</h1>
+        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+      </div>
+      <div class="modal-body">
+        <img class="card-img-top" src="{% static 'icons/not-found-image.svg' %}" alt="Card image cap">
+        <div><b>Price</b>:&nbsp;<span id="price"></span>&nbsp;$</div>
+        <div class="d-flex">
+          <b class="align-self-center">Quantity:&nbsp;</b>   
+          <span class="d-flex">
+            <button data-mdb-button-init data-mdb-ripple-init class="btn px-2" onclick="this.parentNode.querySelector('input[type=number]').stepDown()">
+              <i class="fas fa-minus"></i>
+            </button>
+            <input id="quantity-input" min="0" value="1" type="number"class="form-control form-control-sm" />
+            <button data-mdb-button-init data-mdb-ripple-init class="btn px-2" onclick="this.parentNode.querySelector('input[type=number]').stepUp()">
+              <i class="fas fa-plus"></i>
+            </button>
+          </span>
+        </div>
+      </div>
+      <div class="modal-footer">
+        <a href="">
+          <button type="button" class="btn btn-secondary">Details</button>
+        </a>
+        <button id="" data-cart-item-btn type="button" class="btn btn-success" data-bs-dismiss="modal">Order</button>
+      </div>
+    </div>
   </div>
 </div>
 {% endblock %}
@@ -34,9 +70,68 @@
 <script src="{% static 'vendor/list.js@2.3.1/list.min.js' %}"></script>
 
 <script>
-var foodsList = new List('foods-list', { 
-  valueNames: ['foods-title', 'foods-price'],
-  searchColumns: ['foods-title']
-});
+  var foodsList = new List('foods-list', { 
+    valueNames: ['foods-title', 'foods-price'],
+    searchColumns: ['foods-title']
+  });
 </script>
+
+<script> 
+  $(document).ready(function() { 
+    $('*[data-bs-toggle="modal"]').click(function(event) { 
+      const foods_id = $(this).data("btn-id");
+      const title = $(`*[data-foods-title="${foods_id}"]`).text();
+      const price = $(`*[data-foods-price="${foods_id}"]`).text();
+
+      $('#quantity-input').val(1);
+      $('#title').text(title);
+      $('#price').text(price);
+      $(".modal-footer a").attr('href', `/foods/details/${foods_id}`);
+      $('*[data-cart-item-btn]').attr('id', foods_id);
+    }); 
+  }); 
+</script> 
+
+<script>
+  function getCookie(name) {
+    let cookieValue = null;
+    if (document.cookie && document.cookie !== '') {
+      const cookies = document.cookie.split(';');
+      for (let i = 0; i < cookies.length; i++) {
+        const cookie = cookies[i].trim();
+        if (cookie.substring(0, name.length + 1) === (name + '=')) {
+          cookieValue = decodeURIComponent(cookie.substring(name.length + 1));
+          break;
+        }
+      }
+    }
+    return cookieValue;
+  }
+
+  const csrftoken = getCookie('csrftoken');
+
+  $('*[data-cart-item-btn]').click(function(event) {
+    const quantity = $('#quantity-input').val();
+    const item_id = $(this).attr('id');
+
+    axios({
+      method: 'post',
+      url: '{% url "foods:cartItemAdd" %}',
+      headers: {
+        'X-CSRFToken': csrftoken
+      },
+      data: {
+        item_id: item_id,
+        item_quantity: quantity
+      }
+    }).then(function (response) {
+      console.log(response);
+      $('#cart-item-quantity').attr('value', response.data.quantity)
+    }).catch((error) => {
+      console.log(error);
+    });
+  });
+  
+</script>
+
 {% endblock %}
