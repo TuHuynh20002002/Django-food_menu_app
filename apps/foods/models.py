@@ -1,5 +1,4 @@
 from django.db import models
-from django.contrib.auth.models import User
 from django.utils import timezone
 
 
@@ -40,7 +39,7 @@ class Discount(models.Model):
 
 # Session Models
 class Cart_session(models.Model):
-    user_id = models.ForeignKey(User, on_delete=models.DO_NOTHING)
+    user_id = models.ForeignKey('auth.User', on_delete=models.DO_NOTHING)
     total = models.DecimalField(max_digits=6, decimal_places=2, default=0.00)
     created_at = models.DateTimeField(default=timezone.now, editable=False)
     updated_at = models.DateTimeField(default=timezone.now, editable=False)
@@ -89,7 +88,7 @@ class Payment(models.Model):
 
 
 class Order(models.Model):
-    user_id = models.ForeignKey(User, on_delete=models.DO_NOTHING)
+    user_id = models.ForeignKey('auth.User', on_delete=models.DO_NOTHING)
     total = models.DecimalField(max_digits=6, decimal_places=2)
     payment_id = models.ForeignKey('Payment', on_delete=models.DO_NOTHING)
     created_at = models.DateTimeField(default=timezone.now, editable=False)

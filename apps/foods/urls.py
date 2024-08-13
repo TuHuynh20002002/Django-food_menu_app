@@ -25,4 +25,6 @@ urlpatterns = [
     path('orders/', views.foodsGetOrders, name='getOrders'),
     path('locations/', views.foodsGetLocations, name='getLocations'),
     path('rewards/', views.foodsGetRewards, name='getRewards'),
+    
+    path('cart-item-quantity/', views.cartItemGetQuantity, name='cartItemGetQuantity'),
 ]
