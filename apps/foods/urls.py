@@ -27,4 +27,5 @@ urlpatterns = [
     path('rewards/', views.foodsGetRewards, name='getRewards'),
     
     path('cart-item-quantity/', views.cartItemGetQuantity, name='cartItemGetQuantity'),
+    path('cart-item-add/', views.cartItemAdd, name='cartItemAdd'),
 ]

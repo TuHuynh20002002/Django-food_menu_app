@@ -39,7 +39,7 @@ class Discount(models.Model):
 
 # Session Models
 class Cart_session(models.Model):
-    user_id = models.ForeignKey('auth.User', on_delete=models.DO_NOTHING)
+    user = models.ForeignKey('auth.User', on_delete=models.DO_NOTHING)
     total = models.DecimalField(max_digits=6, decimal_places=2, default=0.00)
     created_at = models.DateTimeField(default=timezone.now, editable=False)
     updated_at = models.DateTimeField(default=timezone.now, editable=False)
@@ -53,16 +53,16 @@ class Cart_session(models.Model):
 
 class Cart_item(models.Model):
     cart_session = models.ForeignKey('Cart_session', on_delete=models.CASCADE)
-    item_id = models.ForeignKey('Item', on_delete=models.CASCADE)
-    quantity = models.IntegerField()
+    item = models.ForeignKey('Item', on_delete=models.CASCADE)
+    quantity = models.IntegerField(default=0)
     created_at = models.DateTimeField(default=timezone.now, editable=False)
     updated_at = models.DateTimeField(default=timezone.now, editable=False)
 
     def __str__(self):
-        return self.item_id.title
+        return self.item.title
 
     def total(self):
-        return self.item_id.price * self.quantity
+        return self.item.price * self.quantity
 
     def save(self, *args, **kwargs):
         if not self.id:
@@ -73,7 +73,7 @@ class Cart_item(models.Model):
 
 # Processed Models
 class Payment(models.Model):
-    order_id = models.ForeignKey('Order', on_delete=models.CASCADE)
+    order = models.ForeignKey('Order', on_delete=models.CASCADE, related_name='payments')
     amount = models.DecimalField(max_digits=6, decimal_places=2)
     method = models.CharField(max_length=100)
     status = models.CharField(max_length=100)
@@ -88,9 +88,9 @@ class Payment(models.Model):
 
 
 class Order(models.Model):
-    user_id = models.ForeignKey('auth.User', on_delete=models.DO_NOTHING)
+    user = models.ForeignKey('auth.User', on_delete=models.DO_NOTHING)
     total = models.DecimalField(max_digits=6, decimal_places=2)
-    payment_id = models.ForeignKey('Payment', on_delete=models.DO_NOTHING)
+    payment = models.ForeignKey('Payment', on_delete=models.DO_NOTHING, related_name='orders')
     created_at = models.DateTimeField(default=timezone.now, editable=False)
     updated_at = models.DateTimeField(default=timezone.now, editable=False)
 
@@ -102,11 +102,17 @@ class Order(models.Model):
 
 
 class Order_item(models.Model):
-    order_id = models.ForeignKey('Order', on_delete=models.CASCADE)
-    item_id = models.ForeignKey('Item', on_delete=models.CASCADE)
-    quantity = models.IntegerField()
+    order = models.ForeignKey('Order', on_delete=models.CASCADE)
+    item = models.ForeignKey('Item', on_delete=models.CASCADE)
+    quantity = models.IntegerField(default=0)
     created_at = models.DateTimeField(default=timezone.now, editable=False)
     updated_at = models.DateTimeField(default=timezone.now, editable=False)
+
+    def __str__(self):
+        return self.item.title
+
+    def total(self):
+        return self.item.price * self.quantity
 
     def save(self, *args, **kwargs):
         if not self.id:

@@ -44,21 +44,21 @@
         <div class="d-flex">
           <b class="align-self-center">Quantity:&nbsp;</b>   
           <span class="d-flex">
-            <button data-mdb-button-init data-mdb-ripple-init class="btn px-2"
-              onclick="this.parentNode.querySelector('input[type=number]').stepDown()">
+            <button data-mdb-button-init data-mdb-ripple-init class="btn px-2" onclick="this.parentNode.querySelector('input[type=number]').stepDown()">
               <i class="fas fa-minus"></i>
             </button>
-            <input id="form1" min="0" name="quantity" value="1" type="number"class="form-control form-control-sm" />
-            <button data-mdb-button-init data-mdb-ripple-init class="btn px-2"
-              onclick="this.parentNode.querySelector('input[type=number]').stepUp()">
+            <input id="quantity-input" min="0" value="1" type="number"class="form-control form-control-sm" />
+            <button data-mdb-button-init data-mdb-ripple-init class="btn px-2" onclick="this.parentNode.querySelector('input[type=number]').stepUp()">
               <i class="fas fa-plus"></i>
             </button>
           </span>
         </div>
       </div>
       <div class="modal-footer">
-        <button type="button" class="btn btn-secondary">Details</button>
-        <button type="button" class="btn btn-success">Order</button>
+        <a href="">
+          <button type="button" class="btn btn-secondary">Details</button>
+        </a>
+        <button id="" data-cart-item-btn type="button" class="btn btn-success" data-bs-dismiss="modal">Order</button>
       </div>
     </div>
   </div>
@@ -70,10 +70,10 @@
 <script src="{% static 'vendor/list.js@2.3.1/list.min.js' %}"></script>
 
 <script>
-var foodsList = new List('foods-list', { 
-  valueNames: ['foods-title', 'foods-price'],
-  searchColumns: ['foods-title']
-});
+  var foodsList = new List('foods-list', { 
+    valueNames: ['foods-title', 'foods-price'],
+    searchColumns: ['foods-title']
+  });
 </script>
 
 <script> 
@@ -83,11 +83,55 @@ var foodsList = new List('foods-list', {
       const title = $(`*[data-foods-title="${foods_id}"]`).text();
       const price = $(`*[data-foods-price="${foods_id}"]`).text();
 
+      $('#quantity-input').val(1);
       $('#title').text(title);
       $('#price').text(price);
-      $('#update-form').attr('action', `/sla/${foods_id}/update`);
+      $(".modal-footer a").attr('href', `/foods/details/${foods_id}`);
+      $('*[data-cart-item-btn]').attr('id', foods_id);
     }); 
   }); 
 </script> 
+
+<script>
+  function getCookie(name) {
+    let cookieValue = null;
+    if (document.cookie && document.cookie !== '') {
+      const cookies = document.cookie.split(';');
+      for (let i = 0; i < cookies.length; i++) {
+        const cookie = cookies[i].trim();
+        if (cookie.substring(0, name.length + 1) === (name + '=')) {
+          cookieValue = decodeURIComponent(cookie.substring(name.length + 1));
+          break;
+        }
+      }
+    }
+    return cookieValue;
+  }
+
+  const csrftoken = getCookie('csrftoken');
+
+  $('*[data-cart-item-btn]').click(function(event) {
+    const quantity = $('#quantity-input').val();
+    const item_id = $(this).attr('id');
+
+    axios({
+      method: 'post',
+      url: '{% url "foods:cartItemAdd" %}',
+      headers: {
+        'X-CSRFToken': csrftoken
+      },
+      data: {
+        item_id: item_id,
+        item_quantity: quantity
+      }
+    }).then(function (response) {
+      console.log(response);
+      $('#cart-item-quantity').attr('value', response.data.quantity)
+    }).catch((error) => {
+      console.log(error);
+    });
+  });
+  
+</script>
 
 {% endblock %}

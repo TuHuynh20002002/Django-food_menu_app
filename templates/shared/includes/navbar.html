@@ -30,7 +30,7 @@
       <ul class="navbar-nav">
         <li class="nav-item">
           <a href="" class="nav-link">
-            <i id="cart-item-quatity" class="fa-solid fa-cart-shopping cart-badge" value="9999"></i>
+            <i id="cart-item-quantity" class="fa-solid fa-cart-shopping cart-badge" value="9999"></i>
           </a>
         </li>
         {% if user.is_authenticated %}
@@ -60,6 +60,6 @@
     method: 'get',
     url: '{% url "foods:cartItemGetQuantity" %}',
   }).then(function (response) {
-    $('#cart-item-quatity').attr('value', response.data.quantity)
+     $('#cart-item-quantity').attr('value', response.data.quantity)
   });
 </script>
