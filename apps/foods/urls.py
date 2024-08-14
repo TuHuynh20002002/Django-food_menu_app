@@ -28,4 +28,5 @@ urlpatterns = [
     
     path('cart-item-quantity/', views.cartItemGetQuantity, name='cartItemGetQuantity'),
     path('cart-item-add/', views.cartItemAdd, name='cartItemAdd'),
+    path('cart-item-remove/', views.cartItemRemove, name='cartItemRemove'),
 ]

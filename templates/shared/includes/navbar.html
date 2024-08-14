@@ -17,9 +17,6 @@
           <a class="nav-link" href="{% url 'base:getAbout' %}"><h5>ABOUT</h5></a>
         </li>
         <li class="nav-item">
-          <a class="nav-link" href="{% url 'foods:getOrders' %}"><h5>ORDERS</h5></a>
-        </li>
-        <li class="nav-item">
           <a class="nav-link" href="{% url 'foods:getLocations' %}"><h5>LOCATIONS</h5></a>
         </li>
         <li class="nav-item">
@@ -29,7 +26,7 @@
 
       <ul class="navbar-nav">
         <li class="nav-item">
-          <a href="" class="nav-link">
+          <a href="{% url 'foods:getOrders' %}" class="nav-link">
             <i id="cart-item-quantity" class="fa-solid fa-cart-shopping cart-badge" value="9999"></i>
           </a>
         </li>
