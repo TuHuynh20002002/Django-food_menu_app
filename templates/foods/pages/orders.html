@@ -8,28 +8,33 @@
 
 
 {% block content %}
-{% for cart_item in cart_items %}
-<div class="card mt-4">
-  <div class="row row-cols-2">
-    <div class="col">
-      <img class="card-img-top" src="{% static 'icons/not-found-image.svg' %}" alt="Card image cap">
-    </div>
-    <div class="card-body col">
-      <h4 class="card-title">{{ cart_item.item.title|title }}</h4>
-      <div class="card-body">
-        <span><b>Price:&nbsp;</b>{{ cart_item.item.price }} $</span>
-        <div class="d-flex">
-          <span class="align-self-center"><b>Quantity:&nbsp;</b>{{ cart_item.quantity }}</span>   
-        </div>
-        <span><b>Total:&nbsp;</b>{{ cart_item.total|floatformat:2 }} $</span>
-      </div>
-      <button data-btn-id="{{ cart_item.item.id}}" class="btn btn-danger btn-sm" data-bs-toggle="modal" data-bs-target="#warningModal">Delete</button>
-    </div>
+<div class="row mt-4">
+  <div class="app-text-text col-4 mt-4">
+    <h1>Total:&nbsp;<b>{{ cart_session.total }} $</b></h1>
+    <button class="btn btn-success">Purchase</button>
   </div>
-</div>
-{% endfor %}
-<div class="app-text-text mt-4">
-  <h1><b>Total:&nbsp;</b>{{ cart_session.total }} $</h1>
+  <div class="col-8">
+    {% for cart_item in cart_items %}
+    <div class="card">
+      <div class="row">
+        <div class="col-6">
+          <img class="card-img-top" src="{% static 'icons/not-found-image.svg' %}" alt="Card image cap">
+        </div>
+        <div class="card-body col-6">
+          <h4 class="card-title">{{ cart_item.item.title|title }}</h4>
+          <div class="card-body">
+            <span>Price:&nbsp;<b>{{ cart_item.item.price }} $</b></span>
+            <div class="d-flex">
+              <span class="align-self-center">Quantity:&nbsp;<b>{{ cart_item.quantity }}</b></span>   
+            </div>
+            <span>Total:&nbsp;<b>{{ cart_item.total|floatformat:2 }} $</b></span>
+          </div>
+          <button data-btn-id="{{ cart_item.item.id}}" class="btn btn-danger btn-sm" data-bs-toggle="modal" data-bs-target="#warningModal">Delete</button>
+        </div>
+      </div>
+    </div>
+    {% endfor %}
+  </div>
 </div>
 
 <!-- Model -->

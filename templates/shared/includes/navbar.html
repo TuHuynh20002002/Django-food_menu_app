@@ -49,7 +49,9 @@
 
 <script>
   currentPath = $(location).attr("pathname")
-  $(`a[href="${currentPath}"]`).addClass("app-text-active") 
+  if (currentPath != "{% url 'foods:getOrders' %}") {
+    $(`a[href="${currentPath}"]`).addClass("app-text-active") 
+  }
 </script>
 
 <script>
