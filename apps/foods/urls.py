@@ -29,4 +29,5 @@ urlpatterns = [
     path('cart-item-quantity/', views.foodsGetCartItemQuantity, name='getCartItemQuantity'),
     path('cart-item-add/', views.foodsPostCartItemAdd, name='postCartItemAdd'),
     path('cart-item-remove/', views.foodsPostCartItemRemove, name='postCartItemRemove'),
+    path('cart-item-purchase/', views.foodsPostCartItemPurchase, name='postCartItemPurchase'),
 ]

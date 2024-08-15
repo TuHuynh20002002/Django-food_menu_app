@@ -15,16 +15,6 @@ class Migration(migrations.Migration):
 
     operations = [
         migrations.CreateModel(
-            name='Discount',
-            fields=[
-                ('id', models.BigAutoField(auto_created=True, primary_key=True, serialize=False, verbose_name='ID')),
-                ('code', models.CharField(max_length=10)),
-                ('discount', models.DecimalField(decimal_places=2, max_digits=6)),
-                ('created_at', models.DateTimeField(default=django.utils.timezone.now, editable=False)),
-                ('updated_at', models.DateTimeField(default=django.utils.timezone.now, editable=False)),
-            ],
-        ),
-        migrations.CreateModel(
             name='Cart_session',
             fields=[
                 ('id', models.BigAutoField(auto_created=True, primary_key=True, serialize=False, verbose_name='ID')),
@@ -65,22 +55,5 @@ class Migration(migrations.Migration):
                 ('item', models.ForeignKey(on_delete=django.db.models.deletion.CASCADE, to='foods.item')),
                 ('order', models.ForeignKey(on_delete=django.db.models.deletion.CASCADE, to='foods.order')),
             ],
-        ),
-        migrations.CreateModel(
-            name='Payment',
-            fields=[
-                ('id', models.BigAutoField(auto_created=True, primary_key=True, serialize=False, verbose_name='ID')),
-                ('amount', models.DecimalField(decimal_places=2, max_digits=6)),
-                ('method', models.CharField(max_length=100)),
-                ('status', models.CharField(max_length=100)),
-                ('created_at', models.DateTimeField(default=django.utils.timezone.now, editable=False)),
-                ('updated_at', models.DateTimeField(default=django.utils.timezone.now, editable=False)),
-                ('order', models.ForeignKey(on_delete=django.db.models.deletion.CASCADE, related_name='payments', to='foods.order')),
-            ],
-        ),
-        migrations.AddField(
-            model_name='order',
-            name='payment',
-            field=models.ForeignKey(on_delete=django.db.models.deletion.DO_NOTHING, related_name='orders', to='foods.payment'),
         ),
     ]

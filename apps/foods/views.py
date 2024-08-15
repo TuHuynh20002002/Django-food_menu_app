@@ -3,7 +3,7 @@ from django.http import JsonResponse, HttpResponseBadRequest
 from django.contrib.auth.decorators import login_required
 from django.shortcuts import render, redirect
 import json
-from .models import Item, Cart_session, Cart_item
+from .models import Item, Cart_session, Cart_item, Order, Order_item
 
 
 @login_required
@@ -76,4 +76,28 @@ def foodsPostCartItemRemove(request):
     cart_item.delete()
 
     cart_items = Cart_item.objects.filter(cart_session=cart_session)
+    return redirect('foods:getOrders')
+
+
+@login_required
+def foodsPostCartItemPurchase(request):
+    cart_session, created = Cart_session.objects.get_or_create(user=request.user)
+    cart_items = Cart_item.objects.filter(cart_session=cart_session)
+    print(cart_items)
+    print(cart_session.total)
+    
+    # Create a new Order instance
+    order = Order.objects.create(user=request.user, total=cart_session.total)
+
+    # Create OrderItem instances for each Cart_item
+    for cart_item in cart_items:
+        Order_item.objects.create(
+            order=order,
+            item=cart_item.item,
+            quantity=cart_item.quantity,
+        )
+    
+    cart_items.delete()
+    cart_session.total = 0
+    cart_session.save()
     return redirect('foods:getOrders')

@@ -11,7 +11,7 @@
 <div class="row mt-4">
   <div class="app-text-text col-4 mt-4">
     <h1>Total:&nbsp;<b>{{ cart_session.total }} $</b></h1>
-    <button class="btn btn-success">Purchase</button>
+    <button class="btn btn-success" data-bs-toggle="modal" data-bs-target="#purchaseModal">Purchase</button>
   </div>
   <div class="col-8">
     {% for cart_item in cart_items %}
@@ -60,6 +60,30 @@
   </div>
 </div>
 
+<div class="modal fade" id="purchaseModal" tabindex="-1" aria-labelledby="purchaseModalLabel" aria-hidden="true">
+  <div class="modal-dialog modal-dialog-centered" id="orderModal">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h1 id="title" class="modal-title fs-5" id="orderModalLabel">Confirmation</h1>
+        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+      </div>
+      <div class="modal-body">
+        <span>Confirm to make your order</span>
+      </div>
+      <div class="modal-footer">
+        <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Cancel</button>
+        <form method="post" action="{% url 'foods:postCartItemPurchase' %}">
+          <button type="submit" class="btn btn-success" data-bs-dismiss="modal">Purchase</button>
+          {% csrf_token %}
+        </form>
+      </div>
+    </div>
+  </div>
+</div>
+{% endblock %}
+
+
+{% block extraScripts %}
 <script> 
   $('*[data-bs-toggle="modal"]').click(function(event) { 
     const item_id = $(this).data("btn-id");
