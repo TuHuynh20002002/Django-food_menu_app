@@ -57,7 +57,7 @@
 <script>
   axios({
     method: 'get',
-    url: '{% url "foods:cartItemGetQuantity" %}',
+    url: '{% url "foods:getCartItemQuantity" %}',
   }).then(function (response) {
      $('#cart-item-quantity').attr('value', response.data.quantity)
   });
