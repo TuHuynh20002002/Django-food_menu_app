@@ -19,20 +19,17 @@ def foodsGetDetails(request, item_id):
 
 
 @login_required
-def foodsGetOrders(request):
+def foodsGetCart(request):
     cart_session, created = Cart_session.objects.get_or_create(user=request.user)
     cart_items = Cart_item.objects.filter(cart_session=cart_session)
-    return render(request, 'foods/pages/orders.html', {'cart_items': cart_items, 'cart_session': cart_session})
+    return render(request, 'foods/pages/cart.html', {'cart_items': cart_items, 'cart_session': cart_session})
 
 
 @login_required
-def foodsGetLocations(request):
-    return render(request, 'foods/pages/locations.html')
-
-
-@login_required
-def foodsGetRewards(request):
-    return render(request, 'foods/pages/rewards.html')
+def foodsGetOrders(request):
+    orders = Order.objects.filter(user=request.user)
+    order_items = Order_item.objects.filter(order__in=orders)
+    return render(request, 'foods/pages/orders.html', {'order_items': order_items, 'orders': orders.order_by('-created_at')})
 
 
 @login_required
@@ -76,7 +73,7 @@ def foodsPostCartItemRemove(request):
     cart_item.delete()
 
     cart_items = Cart_item.objects.filter(cart_session=cart_session)
-    return redirect('foods:getOrders')
+    return redirect('foods:getCart')
 
 
 @login_required
@@ -100,4 +97,4 @@ def foodsPostCartItemPurchase(request):
     cart_items.delete()
     cart_session.total = 0
     cart_session.save()
-    return redirect('foods:getOrders')
+    return redirect('foods:getCart')

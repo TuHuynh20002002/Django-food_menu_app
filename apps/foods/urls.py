@@ -22,9 +22,8 @@ app_name = 'foods'
 urlpatterns = [
     path('', views.foodsGetIndex, name='getIndex'),
     path('details/<int:item_id>/', views.foodsGetDetails, name='getDetails'),
+    path('cart/', views.foodsGetCart, name='getCart'),
     path('orders/', views.foodsGetOrders, name='getOrders'),
-    path('locations/', views.foodsGetLocations, name='getLocations'),
-    path('rewards/', views.foodsGetRewards, name='getRewards'),
 
     path('cart-item-quantity/', views.foodsGetCartItemQuantity, name='getCartItemQuantity'),
     path('cart-item-add/', views.foodsPostCartItemAdd, name='postCartItemAdd'),
