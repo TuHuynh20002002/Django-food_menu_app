@@ -25,8 +25,8 @@ urlpatterns = [
     path('orders/', views.foodsGetOrders, name='getOrders'),
     path('locations/', views.foodsGetLocations, name='getLocations'),
     path('rewards/', views.foodsGetRewards, name='getRewards'),
-    
-    path('cart-item-quantity/', views.cartItemGetQuantity, name='cartItemGetQuantity'),
-    path('cart-item-add/', views.cartItemAdd, name='cartItemAdd'),
-    path('cart-item-remove/', views.cartItemRemove, name='cartItemRemove'),
+
+    path('cart-item-quantity/', views.foodsGetCartItemQuantity, name='getCartItemQuantity'),
+    path('cart-item-add/', views.foodsPostCartItemAdd, name='postCartItemAdd'),
+    path('cart-item-remove/', views.foodsPostCartItemRemove, name='postCartItemRemove'),
 ]

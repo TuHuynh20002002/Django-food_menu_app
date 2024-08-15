@@ -50,7 +50,7 @@
       </div>
       <div class="modal-footer">
         <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Cancel</button>
-        <form method="POST" action="{% url 'foods:cartItemRemove' %}">
+        <form method="POST" action="{% url 'foods:postCartItemRemove' %}">
           <input type="text" name="item_id" id="delete-item" class="d-none">
           <button type="submit" class="btn btn-danger" data-bs-dismiss="modal">Delete</button>
           {% csrf_token %}

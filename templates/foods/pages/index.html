@@ -116,7 +116,7 @@
 
     axios({
       method: 'post',
-      url: '{% url "foods:cartItemAdd" %}',
+      url: '{% url "foods:postCartItemAdd" %}',
       headers: {
         'X-CSRFToken': csrftoken
       },
