@@ -1,5 +1,45 @@
 {% extends 'foods/layouts/base.html' %}
 
+
+{% load humanize %}
+
+
+{% load static %}
+
+
 {% block content %}
-<h1 class="app-text-text">Orders</h1>
+<div class="row mt-4">
+  <div class="app-text-text col-4 mt-4">
+    <h1>Total:&nbsp;<b>{{ orders|length }}</b></h1>
+  </div>
+  <div class="col-8">
+    {% for order in orders %}
+    <div class="card mt-4">
+      <div class="row">
+        <div class="col-5 position-relative">
+          <h5 class="position-absolute top-50 start-50 translate-middle">{{ order.created_at }}</h5>
+        </div>
+        <div class="vr"></div>
+        <div class="card-body col-6">
+          {% for order_item in order_items %}
+          {% if order_item.order.id == order.id %}
+          <h4 class="card-title">{{ order_item.item.title|title }}</h4>
+          <div class="card-body row">
+            <span class="col-6">Price:&nbsp;<b>{{ order_item.item.price }} $</b></span>
+            <span class="col-6">Quantity:&nbsp;<b>{{ order_item.quantity }} $</b></span>
+          </div>
+          <hr>
+          {% endif %}
+          {% endfor %}
+          <span>Total:&nbsp;<b>{{ order.total|floatformat:2 }} $</b></span>
+        </div>
+      </div>
+    </div>
+    {% endfor %}
+  </div>
+</div>
+{% endblock %}
+
+
+{% block extraScripts %}
 {% endblock %}

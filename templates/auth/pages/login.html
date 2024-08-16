@@ -1,5 +1,6 @@
 {% extends 'auth/layouts/base.html' %}
 
+
 {% block content %}
 <div class="app-bg-green-ultra-dark">
   <div class="position-absolute top-50 start-50 translate-middle text-center">
@@ -29,10 +30,10 @@
 </div>
 
 {% if messages %}
-  {% for message in messages %}
-    <div class="alert alert-danger fixed-bottom" role="alert">
-      {{ message }}
-    </div>
-  {% endfor %}
+{% for message in messages %}
+<div class="alert alert-danger fixed-bottom" role="alert">
+  {{ message }}
+</div>
+{% endfor %}
 {% endif %}
 {% endblock %}

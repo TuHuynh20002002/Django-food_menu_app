@@ -1,5 +1,6 @@
 {% load static %}
 
+
 <nav class="navbar navbar-expand-lg app-navbar app-text-text" data-bs-theme="dark">
   <div class="container-fluid">
     <a href="{% url 'base:getIndex' %}">
@@ -11,43 +12,54 @@
     <div class="collapse navbar-collapse" id="navbarSupportedContent">
       <ul class="navbar-nav me-auto mb-2 mb-lg-0">
         <li class="nav-item">
-          <a class="nav-link" href="{% url 'foods:getIndex' %}"><h5>FOOD MENU</h5></a>
+          <a class="nav-link" href="{% url 'foods:getIndex' %}"><h5>Menu</h5></a>
         </li>
         <li class="nav-item">
-          <a class="nav-link" href="{% url 'base:getAbout' %}"><h5>ABOUT</h5></a>
+          <a class="nav-link" href="{% url 'foods:getOrders' %}"><h5>Orders History</h5></a>
         </li>
         <li class="nav-item">
-          <a class="nav-link" href="{% url 'foods:getOrders' %}"><h5>ORDERS</h5></a>
-        </li>
-        <li class="nav-item">
-          <a class="nav-link" href="{% url 'foods:getLocations' %}"><h5>LOCATIONS</h5></a>
-        </li>
-        <li class="nav-item">
-          <a class="nav-link" href="{% url 'foods:getRewards' %}"><h5>REWARDS</h5></a>
+          <a class="nav-link" href="{% url 'base:getAbout' %}"><h5>About</h5></a>
         </li>
       </ul>
 
-      {% if user.is_authenticated %}
       <ul class="navbar-nav">
         <li class="nav-item">
-          <a class="nav-link" href="{% url 'auth:postLogout' %}"><h5>LOGOUT</h5></a>
+          <a href="{% url 'foods:getCart' %}" class="nav-link">
+            <i id="cart-item-quantity" class="fa-solid fa-cart-shopping cart-badge" value="9999"></i>
+          </a>
         </li>
-      </ul>
-      {% else %}
-      <ul class="navbar-nav">
+        {% if user.is_authenticated %}
+        <li class="nav-item border border-secondary border-2 rounded"">
+          <h5 class="nav-link">User: {{ user.username|title }}</h5>
+        </li>
         <li class="nav-item">
-          <a class="nav-link" href="{% url 'auth:getRegister' %}"><h5>REGISTER</h5></a>
+          <a class="nav-link" href="{% url 'auth:postLogout' %}"><h5>Logout</h5></a>
+        </li>
+        {% else %}
+        <li class="nav-item">
+          <a class="nav-link" href="{% url 'auth:getRegister' %}"><h5>Register</h5></a>
         </li>
         <li class="nav-item">
-          <a class="nav-link" href="{% url 'auth:getLogin' %}"><h5>LOGIN</h5></a>
+          <a class="nav-link" href="{% url 'auth:getLogin' %}"><h5>Login</h5></a>
         </li>
+        {% endif %}
       </ul>
-      {% endif %}
     </div>
   </div>
 </nav>
 
 <script>
   currentPath = $(location).attr("pathname")
-  $(`a[href="${currentPath}"]`).addClass("app-text-active") 
+  if (currentPath != "{% url 'foods:getCart' %}") {
+    $(`a[href="${currentPath}"]`).addClass("app-text-active") 
+  }
+</script>
+
+<script>
+  axios({
+    method: 'get',
+    url: '{% url "foods:getCartItemQuantity" %}',
+  }).then(function (response) {
+     $('#cart-item-quantity').attr('value', response.data.quantity)
+  });
 </script>

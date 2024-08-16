@@ -5,29 +5,22 @@
 
 
 {% block content %}
-<div id="foods-list">
-  <div class="hstack gap-3 m-4">
-    <input class="form-control me-auto fuzzy-search" type="text" placeholder="Search">
-    <button class="sort app-btn-white" data-sort="foods-title">Sort by name</button>
-    <button class="sort app-btn-white" data-sort="foods-price"> Sort by price</button>
-  </div>
-  <div class="row row-cols-lg-4 row-cols-1 list">
-    {% for item in items %}
-    <div class="card p-0">
-      <a href="{% url 'foods:getDetails' item.id %}">
-        <img class="card-img-top" src="{% static 'icons/not-found-image.svg' %}" alt="Card image cap">
-      </a>
-      <div class="card-body">
-        <h5 class="card-title foods-title" data-foods-title="{{ item.id }}">{{ item.title|title }}</h5>
-        <p class="card-text foods-price" data-foods-price="{{ item.id }}">{{ item.price }}</p>
-        <div class="text-end">
-          <button type="button" class="btn btn-success" data-btn-id="{{ item.id }}" data-bs-toggle="modal" data-bs-target="#orderModal">
-            Add to cart
-          </button>
-        </div>
+<div class="card mt-4">
+  <div class="row">
+    <div class="col-6" >
+      <img class="card-img-top" src="{% static 'icons/not-found-image.svg' %}" alt="Card image cap">
+    </div>
+    <div class="card-body col-6">
+      <h5 class="card-title" data-foods-title="{{ item.id }}">{{ item.title|title }}</h5>
+      <p class="card-text">{{ item.description }}</p>
+      <p class="card-text" data-foods-price="{{ item.id }}"><b>Price:&nbsp;</b>{{ item.price }}</p>
+      <div class="text-end">
+        <a href="{% url 'foods:getIndex' %}" class="btn btn-secondary">Back to menu</a>
+        <button type="button" class="btn btn-success" data-btn-id="{{ item.id }}" data-bs-toggle="modal" data-bs-target="#orderModal">
+          Add to cart
+        </button>
       </div>
     </div>
-    {% endfor %}
   </div>
 </div>
 
@@ -68,15 +61,6 @@
 
 
 {% block extraScripts %}
-<script src="{% static 'vendor/list.js@2.3.1/list.min.js' %}"></script>
-
-<script>
-  var foodsList = new List('foods-list', { 
-    valueNames: ['foods-title', 'foods-price'],
-    searchColumns: ['foods-title']
-  });
-</script>
-
 <script> 
   $(document).ready(function() { 
     $('*[data-bs-toggle="modal"]').click(function(event) { 

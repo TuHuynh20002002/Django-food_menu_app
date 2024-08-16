@@ -1,0 +1,1 @@
+This folder contains required fonts of fontawesome

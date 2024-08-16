@@ -1,15 +1,18 @@
 from django.contrib import messages
 from django.contrib.auth import authenticate, login, logout
 from django.contrib.auth.models import User
-from django.http import HttpResponse, JsonResponse
 from django.shortcuts import render, redirect
 
 
 def authGetLogin(request):
+    if request.user.is_authenticated:
+        return redirect('foods:getIndex')
     return render(request, 'auth/pages/login.html')
 
 
 def authGetRegister(request):
+    if request.user.is_authenticated:
+        return redirect('foods:getIndex')
     return render(request, 'auth/pages/register.html')
 
 
@@ -21,19 +24,19 @@ def authPostRegister(request):
 
     if User.objects.filter(username=username).exists():
         messages.error(request, 'Username already exists')
-        return redirect('/auth/register')
+        return redirect('auth:getRegister')
 
     if User.objects.filter(email=request.POST.get('email')).exists():
         messages.error(request, 'Email already exists')
-        return redirect('/auth/register')
+        return redirect('auth:getRegister')
 
     if password != password_confirmation:
         messages.error(request, 'Password confirmation does not match')
-        return redirect('/auth/register')
+        return redirect('auth:getRegister')
 
     user = User.objects.create_user(username.lower(), email.lower(), password)
     user.save()
-    return redirect('/auth/login')
+    return redirect('auth:getLogin')
 
 
 def authPostLogin(request):
@@ -43,13 +46,13 @@ def authPostLogin(request):
 
     if user is None:
         messages.error(request, 'Invalid credentials')
-        return redirect('/auth/login')
+        return redirect('auth:getLogin')
 
     print(user)
     login(request, user)
-    return redirect('/foods/')
+    return redirect('foods:getIndex')
 
 
 def authPostLogout(request):
     logout(request)
-    return redirect('/')
+    return redirect('base:getIndex')
