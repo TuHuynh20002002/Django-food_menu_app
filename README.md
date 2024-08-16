@@ -33,12 +33,7 @@ To use this app, you need to have Python3 and Django on your machine. You can in
     python3 manage.py migrate
     ```
 
-4.  Create Super-admin user:
-    ```bash
-    python3 manage.py createsuperuser 
-    ```
-
-5.  Seeding all `seeding_file.json`:
+4.  Seeding all `seeding_file.json`:
   - Linux:
     ```bash
     files=$(find . -name "*.json" -path "*/fixtures/*" -type f)
@@ -51,6 +46,11 @@ To use this app, you need to have Python3 and Django on your machine. You can in
     foreach ($fixture in $fixtures) {
         python manage.py loaddata $fixture.FullName
     }
+    ```
+
+5.  Create Super-admin user:
+    ```bash
+    python3 manage.py createsuperuser 
     ```
 
 6.  Run server:
