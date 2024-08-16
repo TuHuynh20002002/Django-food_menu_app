@@ -1,16 +1,20 @@
 {% load static %}
+
+
 <!DOCTYPE html>
 <html lang="en">
-<head>
+  <head>
     {% include 'base/includes/head.html' %}
     {% block extraHead %}{% endblock extraHead %}
-</head>
-<body>
+  </head>
+  <body>
     {% include 'shared/includes/navbar.html' %}
 
-    {% block content %}{% endblock %}
+    <div class="container-lg">
+      {% block content %}{% endblock %}
+    </div>
     
     {% include 'base/includes/scripts.html' %}
     {% block extraScripts %}{% endblock %}
-</body>
+  </body>
 </html>
